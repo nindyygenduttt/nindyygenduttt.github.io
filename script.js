@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const message = document.createElement('div');
-    message.textContent = 'Terima kasih telah mengunjungi!';
-    message.style.position = 'fixed';
-    message.style.bottom = '10px';
-    message.style.right = '10px';
-    message.style.backgroundColor = '#000';
-    message.style.color = '#fff';
-    message.style.padding = '10px';
-    message.style.borderRadius = '5px';
-    document.body.appendChild(message);
+    const overlay = document.getElementById('overlay');
+    const closeButton = document.getElementById('close-button');
 
-    setTimeout(() => {
-        message.style.opacity = 0;
-    }, 3000);
+    // Menutup popup saat tombol ditekan
+    closeButton.addEventListener('click', () => {
+        overlay.style.opacity = 0;
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Mengembalikan scrollbar
+        }, 500); // Waktu untuk transisi animasi
+    });
+
+    // Menjaga overlay tetap terlihat hingga ditutup
+    overlay.style.display = 'flex';
 });
